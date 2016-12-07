@@ -1,0 +1,34 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SfChart.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Charts="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:ViewModels="using:SfChart.ViewModels"
+    x:Class="SfChart.Views.ChartView"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Charts:SfChart HorizontalAlignment="Left" VerticalAlignment="Top" Header="Demands Comparison" Height="300" Width="400">
+            <Charts:SfChart.PrimaryAxis>
+                <Charts:CategoryAxis Header="Demands" FontSize="14"/>
+            </Charts:SfChart.PrimaryAxis>
+
+            <Charts:SfChart.SecondaryAxis>
+                <Charts:NumericalAxis Header="Values" FontSize="14"/>
+            </Charts:SfChart.SecondaryAxis>
+
+            <Charts:ColumnSeries Label="2010" ItemsSource="{x:Bind ViewModels.Demands}" XBindingPath="Demand" YBindingPath="Year2010" />
+
+            <Charts:ColumnSeries Label="2011" ItemsSource="{x:Bind ViewModels.Demands}" XBindingPath="Demand" YBindingPath="Year2011" />
+
+            <Charts:SfChart.Legend>
+                <Charts:ChartLegend/>
+            </Charts:SfChart.Legend>
+            
+        </Charts:SfChart>
+
+    </Grid>
+</Page>
