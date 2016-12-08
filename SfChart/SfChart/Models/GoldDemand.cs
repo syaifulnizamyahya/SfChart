@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SfChart.Models
 {
-	public class GoldDemand
+
+	public class Series
 	{
-		public string Demand { get; set; }
-		public double Year2010 { get; set; }
-		public double Year2011 { get; set; }
+		public ObservableCollection<Curve> Curves { get; set; } = new ObservableCollection<Curve>();
+	}
+
+	public class Curve
+	{
+		public ObservableCollection<Point> Points { get; set; } = new ObservableCollection<Point>();
+	}
+	public class Point
+	{
+		public double x { get; set; } = default(double);
+		public double y { get; set; } = default(double);
 	}
 }

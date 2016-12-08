@@ -26,7 +26,7 @@ namespace SfChart.Views
 		{
 			this.InitializeComponent();
 
-			ViewModels.InitDemands();
+			ViewModels.InitSampleData();
 		}
 
 		public ViewModels.ChartViewModel ViewModels = new SfChart.ViewModels.ChartViewModel();

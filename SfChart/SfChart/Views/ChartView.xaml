@@ -1,33 +1,38 @@
-﻿<Page
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SfChart.Views"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:Charts="using:Syncfusion.UI.Xaml.Charts"
-    xmlns:ViewModels="using:SfChart.ViewModels"
-    x:Class="SfChart.Views.ChartView"
-    mc:Ignorable="d">
+﻿<Page x:Class="SfChart.Views.ChartView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Charts="using:Syncfusion.UI.Xaml.Charts"
+      xmlns:ViewModels="using:SfChart.ViewModels"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:SfChart.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Charts:SfChart HorizontalAlignment="Left" VerticalAlignment="Top" Header="Demands Comparison" Height="300" Width="400">
+        <Charts:SfChart Width="600"
+                        Height="600"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Header="Access Point Signal Strength">
             <Charts:SfChart.PrimaryAxis>
-                <Charts:CategoryAxis Header="Demands" FontSize="14"/>
+                <Charts:CategoryAxis FontSize="14" Header="Channel" />
             </Charts:SfChart.PrimaryAxis>
 
             <Charts:SfChart.SecondaryAxis>
-                <Charts:NumericalAxis Header="Values" FontSize="14"/>
+                <Charts:NumericalAxis FontSize="14" Header="RSSI" />
             </Charts:SfChart.SecondaryAxis>
 
-            <Charts:ColumnSeries Label="2010" ItemsSource="{x:Bind ViewModels.Demands}" XBindingPath="Demand" YBindingPath="Year2010" />
-
-            <Charts:ColumnSeries Label="2011" ItemsSource="{x:Bind ViewModels.Demands}" XBindingPath="Demand" YBindingPath="Year2011" />
+            <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[0].Points}" XBindingPath="x" YBindingPath="y"/>
+            <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[1].Points}" XBindingPath="x" YBindingPath="y"/>
+            <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[2].Points}" XBindingPath="x" YBindingPath="y"/>
+            <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[3].Points}" XBindingPath="x" YBindingPath="y"/>
+            <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[4].Points}" XBindingPath="x" YBindingPath="y"/>
 
             <Charts:SfChart.Legend>
-                <Charts:ChartLegend/>
+                <Charts:ChartLegend />
             </Charts:SfChart.Legend>
-            
+
         </Charts:SfChart>
 
     </Grid>
