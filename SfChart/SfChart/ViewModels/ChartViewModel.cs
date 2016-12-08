@@ -1,12 +1,14 @@
 ﻿using SfChart.Models;
 using System.Collections.ObjectModel;
 using System;
+using Syncfusion.UI.Xaml.Charts;
 
 namespace SfChart.ViewModels
 {
 	public class ChartViewModel
 	{
 		public ObservableCollection<Curve> ChartSeries { get; set; } = new ObservableCollection<Curve>();
+
 
 		public void InitCurve()
 		{
@@ -34,6 +36,24 @@ namespace SfChart.ViewModels
 		public void InitSampleData()
 		{
 			InitCurve();
+			InitSeriesCollection();
+		}
+
+		public ChartSeriesCollection SeriesCollection { get; set; } = new ChartSeriesCollection();
+
+		private void InitSeriesCollection()
+		{
+			Random random = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
+
+			for (int i = 0; i< ChartSeries.Count; i++)
+			{
+				var splineSeries = new SplineSeries();
+				splineSeries.ItemsSource = ChartSeries[i].Points;
+				splineSeries.XBindingPath = "x";
+				splineSeries.YBindingPath = "y";
+				splineSeries.Label = random.Next().ToString();
+				SeriesCollection.Add(splineSeries);
+			}
 		}
 	}
 }
