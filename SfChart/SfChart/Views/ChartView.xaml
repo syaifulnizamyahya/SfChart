@@ -11,47 +11,12 @@
     <ScrollViewer>
 
         <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-            <Charts:SfChart x:Name="chart1"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Header="Access Point Signal Strength">
-                <Charts:SfChart.PrimaryAxis>
-                    <Charts:CategoryAxis FontSize="14" Header="Channel" />
-                </Charts:SfChart.PrimaryAxis>
-
-                <Charts:SfChart.SecondaryAxis>
-                    <Charts:NumericalAxis FontSize="14" Header="RSSI" />
-                </Charts:SfChart.SecondaryAxis>
-
-                <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[0].Points}"
-                                 XBindingPath="x"
-                                 YBindingPath="y" />
-                <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[1].Points}"
-                                 XBindingPath="x"
-                                 YBindingPath="y" />
-                <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[2].Points}"
-                                 XBindingPath="x"
-                                 YBindingPath="y" />
-                <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[3].Points}"
-                                 XBindingPath="x"
-                                 YBindingPath="y" />
-                <Charts:SplineSeries ItemsSource="{x:Bind ViewModels.ChartSeries[4].Points}"
-                                 XBindingPath="x"
-                                 YBindingPath="y" />
-
-                <Charts:SfChart.Legend>
-                    <Charts:ChartLegend />
-                </Charts:SfChart.Legend>
-
-            </Charts:SfChart>
-
-            <Charts:SfChart x:Name="chart2"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Header="Access Point Signal Strength"
-                        RelativePanel.Below="chart1"
-                        Series="{x:Bind ViewModels.SeriesCollection}">
+            
+            <Charts:SfChart x:Name="chart3"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Header="Access Point Signal Strength"
+                            Series="{x:Bind ViewModels.RssiCollection}">
                 <Charts:SfChart.PrimaryAxis>
                     <Charts:CategoryAxis FontSize="14" Header="Channel" />
                 </Charts:SfChart.PrimaryAxis>
