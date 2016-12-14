@@ -18,7 +18,7 @@
                             Header="Access Point Signal Strength"
                             Series="{x:Bind ViewModels.RssiCollection}">
                 <Charts:SfChart.PrimaryAxis>
-                    <Charts:CategoryAxis FontSize="14" Header="Channel" />
+                    <Charts:NumericalAxis FontSize="14" Header="Channel" />
                 </Charts:SfChart.PrimaryAxis>
 
                 <Charts:SfChart.SecondaryAxis>
