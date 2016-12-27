@@ -11,24 +11,85 @@
     <ScrollViewer>
 
         <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-            
-            <Charts:SfChart x:Name="chart3"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Header="Access Point Signal Strength"
-                            Series="{x:Bind ViewModels.RssiCollection}">
+
+            <Charts:SfChart Margin="12"
+                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
+                            Series="{x:Bind ViewModels.Collection}">
+                <!--  SelectionChanged="{x:Bind ViewModels.SeriesSelectionChanged}"  -->
                 <Charts:SfChart.PrimaryAxis>
-                    <Charts:NumericalAxis FontSize="14" Header="Channel" />
+                    <Charts:NumericalAxis DeferredScrolling="True"
+                                          EnableScrollBar="True"
+                                          EnableTouchMode="True"
+                                          Header="Channel"
+                                          Interval="1"
+                                          Maximum="{x:Bind ViewModels.MaxChannel2}"
+                                          Minimum="{x:Bind ViewModels.MinChannel1}"
+                                          ThumbLabelVisibility="Visible" />
                 </Charts:SfChart.PrimaryAxis>
 
                 <Charts:SfChart.SecondaryAxis>
-                    <Charts:NumericalAxis FontSize="14" Header="RSSI" />
-                </Charts:SfChart.SecondaryAxis>
+                    <Charts:NumericalAxis DeferredScrolling="True"
+                                          EnableScrollBar="True"
+                                          EnableTouchMode="True"
+                                          FontSize="14"
+                                          Header="Signal Strength"
+                                          Maximum="{x:Bind ViewModels.MaxRssi}"
+                                          Minimum="{x:Bind ViewModels.MinRssi}"
+                                          ThumbLabelVisibility="Visible">
+                        <Charts:NumericalAxis.StripLines>
+                            <Charts:ChartStripLine x:Name="Excellent_ChartLineStrip"
+                                                   Width="{x:Bind ViewModels.ChartStripLineWidthExcellent}"
+                                                   Background="#7F90EE90"
+                                                   Label="Excellent"
+                                                   Start="{x:Bind ViewModels.ChartStripLineStartExcellent}">
+                                <Charts:ChartStripLine.LabelTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="#7F000000"
+                                                   Style="{StaticResource SubheaderTextBlockStyle}"
+                                                   Text="{Binding}" />
+                                    </DataTemplate>
+                                </Charts:ChartStripLine.LabelTemplate>
+                            </Charts:ChartStripLine>
+                            <Charts:ChartStripLine x:Name="Good_ChartLineStrip"
+                                                   Width="{x:Bind ViewModels.ChartStripLineWidthGood}"
+                                                   Background="#7FADD8E6"
+                                                   Label="Good"
+                                                   Start="{x:Bind ViewModels.ChartStripLineStartGood}">
+                                <Charts:ChartStripLine.LabelTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="#7F000000"
+                                                   Style="{StaticResource SubheaderTextBlockStyle}"
+                                                   Text="{Binding}" />
+                                    </DataTemplate>
+                                </Charts:ChartStripLine.LabelTemplate>
 
+                            </Charts:ChartStripLine>
+                            <Charts:ChartStripLine x:Name="Poor_ChartLineStrip"
+                                                   Width="{x:Bind ViewModels.ChartStripLineWidthPoor}"
+                                                   Background="#7FFFB6C1"
+                                                   Label="Poor"
+                                                   Start="{x:Bind ViewModels.ChartStripLineStartPoor}">
+                                <Charts:ChartStripLine.LabelTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="#7F000000"
+                                                   Style="{StaticResource SubheaderTextBlockStyle}"
+                                                   Text="{Binding}" />
+                                    </DataTemplate>
+                                </Charts:ChartStripLine.LabelTemplate>
+                            </Charts:ChartStripLine>
+                        </Charts:NumericalAxis.StripLines>
+                    </Charts:NumericalAxis>
+                </Charts:SfChart.SecondaryAxis>
                 <Charts:SfChart.Legend>
                     <Charts:ChartLegend />
                 </Charts:SfChart.Legend>
-
+                <Charts:SfChart.Behaviors>
+                    <!--<Charts:ChartCrossHairBehavior></Charts:ChartCrossHairBehavior>-->
+                    <!--<Charts:ChartTrackBallBehavior />-->
+                    <Charts:ChartZoomPanBehavior EnableSelectionZooming="True" />
+                    <!--<Charts:ChartSelectionBehavior EnableSeriesSelection="True" SelectionMode="MouseMove" SelectionStyle="Single"  />-->
+                </Charts:SfChart.Behaviors>
             </Charts:SfChart>
         </RelativePanel>
     </ScrollViewer>
